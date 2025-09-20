@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Voter Registration{% endblock %}
+
+{% block head_extra %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    {# Removed the form-container box. Content now directly in form-wrapper. #}
+    <div class="col-md-7 col-lg-6 form-wrapper text-center"> {# New wrapper for form content, text-center for centering #}
+        <h2 class="mb-4 text-light-custom">Voter Registration</h2> {# Heading, now explicitly white/light #}
+        <form action="{{ url_for('register') }}" method="post" class="p-4 rounded-3 custom-form-bg shadow-lg"> {# Form itself gets styling #}
+            <div class="mb-3">
+                <label for="name" class="form-label text-light-custom">Full Name:</label> {# Labels are now white #}
+                <input type="text" id="name" name="name" class="form-control" required placeholder="Enter your full name">
+            </div>
+            <div class="mb-3">
+                <label for="aadhar" class="form-label text-light-custom">Aadhar Number (12 digits):</label>
+                <input type="text" id="aadhar" name="aadhar" class="form-control" pattern="[0-9]{12}" title="Aadhar number must be 12 digits" required placeholder="Enter 12-digit Aadhar">
+            </div>
+            <div class="mb-3">
+                <label for="place_name" class="form-label text-light-custom">Place (from Voter ID):</label>
+                <input type="text" id="place_name" name="place_name" class="form-control" required placeholder="e.g., Kochi">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label text-light-custom">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required placeholder="Create a password">
+            </div>
+            <div class="mb-3 d-flex justify-content-center">
+                <div class="g-recaptcha" data-sitekey="6LepopMrAAAAAAKoGFh225kzQj1GmSgO2wQVjtiX"></div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-3 custom-button-shadow">Register</button>
+        </form>
+        <p class="text-center mt-3"><a href="{{ url_for('voter_login') }}" class="btn btn-link text-light-custom">Already have an account? Login here</a></p> {# Adjusted link styling #}
+        <p class="text-center mt-2"><a href="{{ url_for('index') }}" class="btn btn-link text-light-custom">Back to Home</a></p>
+    </div>
+</div>
+{% endblock %}

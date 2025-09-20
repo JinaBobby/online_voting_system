@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand custom-brand-color" href="{{ url_for('index') }}">Online Voting System</a>
+        <div class="ms-auto"> {# ms-auto pushes content to the right #}
+            {% if 'user_id' in session %}
+                <span class="navbar-text text-light me-3 d-none d-lg-inline">Welcome, {{ session.username }}</span> {# Show welcome for logged-in users on larger screens #}
+                <a class="btn btn-sm btn-outline-light" href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

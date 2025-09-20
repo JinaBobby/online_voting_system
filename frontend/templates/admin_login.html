@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6 form-wrapper text-center">
+        <h2 class="mb-4 text-light-custom">Admin Login</h2>
+        <form action="{{ url_for('admin_login') }}" method="post" class="p-4 rounded-3 custom-form-bg shadow-lg">
+            <div class="mb-3">
+                <label for="username" class="form-label text-light-custom">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required placeholder="Enter your username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label text-light-custom">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn btn-dark w-100 mt-3 custom-button-shadow">Login</button>
+        </form>
+        <p class="text-center mt-2"><a href="{{ url_for('index') }}" class="btn btn-link text-light-custom">Back to Home</a></p>
+    </div>
+</div>
+{% endblock %}
